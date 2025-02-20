@@ -1,0 +1,66 @@
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+Note: Reset active
+Time: 0 ps  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Reset released
+Time: 10 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Enable active, incrementing...
+Time: 20 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Enable deactivated
+Time: 70 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Control reset active
+Time: 80 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Control reset released
+Time: 90 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Enable active again, incrementing...
+Time: 100 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Test completed
+Time: 150 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Reset active
+Time: 150 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Reset released
+Time: 160 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Enable active, incrementing...
+Time: 170 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Enable deactivated
+Time: 220 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Control reset active
+Time: 230 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Control reset released
+Time: 240 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Enable active again, incrementing...
+Time: 250 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Test completed
+Time: 300 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Reset active
+Time: 300 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Reset released
+Time: 310 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Enable active, incrementing...
+Time: 320 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Enable deactivated
+Time: 370 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Control reset active
+Time: 380 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Control reset released
+Time: 390 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Enable active again, incrementing...
+Time: 400 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Test completed
+Time: 450 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Reset active
+Time: 450 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Reset released
+Time: 460 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Enable active, incrementing...
+Time: 470 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Enable deactivated
+Time: 520 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Control reset active
+Time: 530 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Control reset released
+Time: 540 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Enable active again, incrementing...
+Time: 550 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd
+Note: Test completed
+Time: 600 ns  Iteration: 0  Process: /tb_accumulator/stimulus_process  File: C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd

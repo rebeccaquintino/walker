@@ -1,0 +1,10 @@
+0.7
+2020.1
+May 27 2020
+20:09:33
+C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_accumulator.vhd,1736456384,vhdl,,,,tb_accumulator,,,,,,,,
+C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_adder.vhd,1736455719,vhdl,,,,tb_adder,,,,,,,,
+C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_reg.vhd,1736455143,vhdl,,,,tb_reg,,,,,,,,
+C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sources_1/new/accumulator.vhd,1736451845,vhdl,,,,accumulator,,,,,,,,
+C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sources_1/new/adder.vhd,1736452954,vhdl,C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_adder.vhd,,,adder,,,,,,,,
+C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sources_1/new/reg.vhd,1736451859,vhdl,C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.srcs/sim_1/new/tb_reg.vhd,,,reg,,,,,,,,

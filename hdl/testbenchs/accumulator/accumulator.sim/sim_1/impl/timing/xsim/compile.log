@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/rebec/Desktop/Spacelab/brave/walker/testbenchs/accumulator/accumulator.sim/sim_1/impl/timing/xsim/accumulator_time_impl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module accumulator
+INFO: [VRFC 10-311] analyzing module reg
+INFO: [VRFC 10-311] analyzing module glbl
