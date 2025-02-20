@@ -8,7 +8,7 @@
 <p align="center">
     <a href="#memory-test-functions">Memory Test Functions</a> •
     <a href="#releases">Releases</a> •
-    <a href="#license">License</a> •
+    <a href="#license">License</a> 
 </p>
 
 ## Memory Test Functions
