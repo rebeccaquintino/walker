@@ -21,6 +21,18 @@ This function tests the integrity of the memory data bus by checking for bit fai
 
 This test detects faults such as shorted or open data lines in the memory system.
 
+<p align="center">
+    <img width="70%" src="https://github.com/rebeccaquintino/walker/tree/dev_doc/doc/memTestDataBus/memTestDataBus_flowchart.drawio.png">
+</p>
+
+<p align="center">
+    <img width="70%" src="https://github.com/rebeccaquintino/walker/tree/dev_doc/doc/memTestDataBus/memTestDataBus_fsm.drawio.png">
+</p>
+
+<p align="center">
+    <img width="70%" src="https://github.com/rebeccaquintino/walker/tree/dev_doc/doc/memTestDataBus/memTestDataBus_blockdiagram.drawio.png">
+</p>
+
 ### `memTestAddressBus()`
 This function verifies the address bus integrity by ensuring each memory address is uniquely accessible. The test follows these steps:
 - Writing a unique pattern to each address within the test range.
@@ -38,6 +50,18 @@ This function performs an exhaustive test of the memory cells to verify their ab
 - Repeating the process with alternating bit patterns (`0xAA`, `0x55`) to test different configurations.
 
 This comprehensive test detects memory cells that fail to retain stored values over time.
+
+<p align="center">
+    <img width="70%" src="https://github.com/rebeccaquintino/walker/tree/dev_doc/doc/memTestDevice/memTestDevice_flowchart.drawio.png">
+</p>
+
+<p align="center">
+    <img width="70%" src="https://github.com/rebeccaquintino/walker/tree/dev_doc/doc/memTestDevice/memTestDevice_fsm.drawio.png">
+</p>
+
+<p align="center">
+    <img width="70%" src="https://github.com/rebeccaquintino/walker/tree/dev_doc/doc/memTestDevice/memTestDevice_blockdiagram.drawio.png">
+</p>
 
 
 ## Releases
