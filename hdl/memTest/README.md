@@ -22,15 +22,15 @@ This function tests the integrity of the memory data bus by checking for bit fai
 This test detects faults such as shorted or open data lines in the memory system.
 
 <p align="center">
-    <img width="70%" src="https://github.com/rebeccaquintino/walker/tree/dev_doc/doc/memTestDataBus/memTestDataBus_flowchart.drawio.png">
+    <img width="70%" src="https://raw.githubusercontent.com/rebeccaquintino/walker/dev_doc/doc/memTestDataBus/memTestDataBus_flowchart.drawio.png">
 </p>
 
 <p align="center">
-    <img width="70%" src="https://github.com/rebeccaquintino/walker/tree/dev_doc/doc/memTestDataBus/memTestDataBus_fsm.drawio.png">
+    <img width="70%" src="https://raw.githubusercontent.com/rebeccaquintino/walker/dev_doc/doc/memTestDataBus/memTestDataBus_fsm.drawio.png">
 </p>
 
 <p align="center">
-    <img width="70%" src="https://github.com/rebeccaquintino/walker/tree/dev_doc/doc/memTestDataBus/memTestDataBus_blockdiagram.drawio.png">
+    <img width="70%" src="https://raw.githubusercontent.com/rebeccaquintino/walker/dev_doc/doc/memTestDataBus/memTestDataBus_blockdiagram.drawio.png">
 </p>
 
 ### `memTestAddressBus()`
@@ -52,23 +52,22 @@ This function performs an exhaustive test of the memory cells to verify their ab
 This comprehensive test detects memory cells that fail to retain stored values over time.
 
 <p align="center">
-    <img width="70%" src="https://github.com/rebeccaquintino/walker/tree/dev_doc/doc/memTestDevice/memTestDevice_flowchart.drawio.png">
+    <img width="70%" src="https://raw.githubusercontent.com/rebeccaquintino/walker/dev_doc/doc/memTestDevice/memTestDevice_flowchart.drawio.png">
 </p>
 
 <p align="center">
-    <img width="70%" src="https://github.com/rebeccaquintino/walker/tree/dev_doc/doc/memTestDevice/memTestDevice_fsm.drawio.png">
+    <img width="70%" src="https://raw.githubusercontent.com/rebeccaquintino/walker/dev_doc/doc/memTestDevice/memTestDevice_fsm.drawio.png">
 </p>
 
 <p align="center">
-    <img width="70%" src="https://github.com/rebeccaquintino/walker/tree/dev_doc/doc/memTestDevice/memTestDevice_blockdiagram.drawio.png">
+    <img width="70%" src="https://raw.githubusercontent.com/rebeccaquintino/walker/dev_doc/doc/memTestDevice/memTestDevice_blockdiagram.drawio.png">
 </p>
-
 
 ## Releases
 
 The latest releases of this project can be found [here](https://github.com/rebeccaquintino/walker/releases).
 
-
 ## License
 
 This project is licensed under the **GNU General Public License v3.0**. For more details, refer to the [LICENSE](https://www.gnu.org/licenses/gpl-3.0.html) file.
+
