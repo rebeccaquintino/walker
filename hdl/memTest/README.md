@@ -26,7 +26,7 @@ This test detects faults such as shorted or open data lines in the memory system
 </p>
 
 <p align="center">
-    <img width="100%" src="https://raw.githubusercontent.com/rebeccaquintino/walker/dev_doc/doc/memTestDataBus/memTestDataBus_fsm.drawio.png">
+    <img width="200%" src="https://raw.githubusercontent.com/rebeccaquintino/walker/dev_doc/doc/memTestDataBus/memTestDataBus_fsm.drawio.png">
 </p>
 
 ### `memTestAddressBus()`
@@ -52,11 +52,11 @@ This comprehensive test detects memory cells that fail to retain stored values o
 </p>
 
 <p align="center">
-    <img width="70%" src="https://raw.githubusercontent.com/rebeccaquintino/walker/dev_doc/doc/memTestDevice/memTestDevice_fsm.drawio.png">
+    <img width="200%" src="https://raw.githubusercontent.com/rebeccaquintino/walker/dev_doc/doc/memTestDevice/memTestDevice_fsm.drawio.png">
 </p>
 
 <p align="center">
-    <img width="70%" src="https://raw.githubusercontent.com/rebeccaquintino/walker/dev_doc/doc/memTestDevice/memTestDevice_blockdiagram.drawio.png">
+    <img width="200%" src="https://raw.githubusercontent.com/rebeccaquintino/walker/dev_doc/doc/memTestDevice/memTestDevice_blockdiagram.drawio.png">
 </p>
 
 ## Releases
