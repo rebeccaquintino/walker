@@ -9,7 +9,7 @@
     <a href="#overview">Overview</a> •
     <a href="#development">Development</a> •
     <a href="#releases">Releases</a> •
-    <a href="#license">License</a> •
+    <a href="#license">License</a> 
 </p>
 
 ## Overview
