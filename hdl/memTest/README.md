@@ -29,6 +29,10 @@ This test detects faults such as shorted or open data lines in the memory system
     <img width="200%" src="https://raw.githubusercontent.com/rebeccaquintino/walker/dev_doc/doc/memTestDataBus/memTestDataBus_fsm.drawio.png">
 </p>
 
+<p align="center">
+    <img width="200%" src="https://raw.githubusercontent.com/rebeccaquintino/walker/dev_doc/doc/memTestDataBus/memTestDataBus_blockdiagram.drawio.png">
+</p>
+
 ### `memTestAddressBus()`
 This function verifies the address bus integrity by ensuring each memory address is uniquely accessible. The test follows these steps:
 - Writing a unique pattern to each address within the test range.
