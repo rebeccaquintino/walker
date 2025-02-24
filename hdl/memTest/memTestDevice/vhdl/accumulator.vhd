@@ -1,9 +1,9 @@
 -------------------------------------------------------------
 -- File: accumulator.vhd
 -- Author: Felipe Viel
--- File function: adder and registes in format of accumulator
+-- File function: adder and registers in format of accumulator
 -- Created: 31/08/2023
--- Modified: 31/08/2023
+-- Modified: 11/10/2024 by Rebecca Quintino Do O
 -------------------------------------------------------------
 
 library ieee;
@@ -27,10 +27,11 @@ entity accumulator is
 
 end entity accumulator;
 
-architecture rtl of reg is
-   signal reg : std_logic_vector(p_WIDTH - 1 downto 0);
-   signal w_RST_REGS          : std_logic;
-   signal w_DOUT_REG_PATTERN  : std_logic_vector (DATUM_WIDTH-1 downto 0);
+architecture behavioral of accumulator is
+   signal reg          : std_logic_vector(p_WIDTH - 1 downto 0);
+   signal w_RST_REGS   : std_logic;
+   signal w_DOUT_ADDER : std_logic_vector(p_WIDTH - 1 downto 0);
+   signal w_DOUT_REG   : std_logic_vector(p_WIDTH - 1 downto 0);
 
  begin
 
@@ -45,7 +46,7 @@ architecture rtl of reg is
        i_CLK    => i_CLK,
        i_RST    => w_RST_REGS,
        i_ENABLE => i_ENABLE,
-       i_DIN    => w_OUT_ADDER,
+       i_DIN    => w_DOUT_ADDER,
        o_DOUT   => w_DOUT_REG
     );
  
@@ -55,13 +56,13 @@ architecture rtl of reg is
     )
     port map (
       i_DIN0     => w_DOUT_REG,
-      i_DIN1     => std_logic_vector(to_unsigned(p_INIT_DATA, p_WIDTH)),
-      o_DOUT     => w_OUT_ADDER,
+      i_DIN1     => std_logic_vector(to_unsigned(p_INCREMENT, p_WIDTH)), -- modified p_INIT_DATA to p_INCREMENT 
+      o_DOUT     => w_DOUT_ADDER,
       o_OVERFLOW => open
     );
  
     o_DOUT <= w_DOUT_REG;
    
- end architecture rtl;
+ end architecture behavioral;
  
    

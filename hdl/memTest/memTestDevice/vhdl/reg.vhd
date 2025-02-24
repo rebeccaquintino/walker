@@ -1,9 +1,9 @@
 -------------------------------------------------------------
 -- File: reg.vhd
--- Author: Rebecca Quintino Do �
--- File function: 
+-- Author: Rebecca Quintino Do O
+-- File function: parameterizable register
 -- Created: 09/06/2023
--- Modified: 09/06/2023
+-- Modified: 11/10/2024 by Rebecca Quintino Do O
 -------------------------------------------------------------
 
 library ieee;
@@ -24,22 +24,22 @@ entity reg is
   );
 end entity reg;
 
-architecture rtl of reg is
-  signal reg : std_logic_vector(p_WIDTH - 1 downto 0);
+architecture behavioral of reg is
+  signal w_DOUT_REG : std_logic_vector(p_WIDTH - 1 downto 0);
 
 begin
 
   process (i_CLK, i_RST)
   begin
     if i_RST = '1' then
-      reg <= std_logic_vector(to_unsigned(p_INIT_DATA, p_WIDTH));
+      w_DOUT_REG <= std_logic_vector(to_unsigned(p_INIT_DATA, p_WIDTH));
     elsif rising_edge(i_CLK) then
       if i_ENABLE = '1' then
-        reg <= i_DIN;
+        w_DOUT_REG <= i_DIN;
       end if;
     end if;
   end process;
 
-  o_DOUT <= reg;
+  o_DOUT <= w_DOUT_REG;
   
-end architecture rtl;
+end behavioral;

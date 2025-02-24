@@ -3,14 +3,14 @@
 -- Author: Felipe Viel
 -- File function: top entity to union controller and datapath
 -- Created: 07/07/2023
--- Modified: 19/07/2023
+-- Modified: 10/01/2025 by Rebecca Quintino Do O
 -------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.all;
 
-entity memTestDataBus_top is
+entity memTestDevice_top is
   generic (
     DATUM_WIDTH          : natural                       := 8  -- size of datum -- default is 8b (char)
   );
@@ -35,83 +35,100 @@ entity memTestDataBus_top is
     -- it is compatible with the use of I2C ou SPI IP
     o_memory_data_write     : out  std_logic_vector (DATUM_WIDTH-1 downto 0)
   );
-end entity memTestDataBus_top;
+end entity memTestDevice_top;
 
-architecture rtl of memTestDataBus_top is
-   signal r_RST_REGS                : std_logic;
-   signal r_ENA_REG_PATTERN         : std_logic;
-   signal r_ENA_REG_ADDRESS         : std_logic;
-   signal r_PATTERN_ZERO            : std_logic;
-   signal r_COMPAR_PATTERN_ADDRESS  : std_logic;
-   signal r_MUX_SEL           : std_logic;
+architecture structural of memTestDevice_top is
+  signal r_RST_REGS                  : std_logic;
+  signal r_ENA_REG_PATTERN           : std_logic;
+  signal r_ENA_REG_ANTIPATTERN       : std_logic;
+  signal r_ENA_REG_BASE_ADDR         : std_logic;
+  signal r_ENA_REG_OFFSET            : std_logic;
+  signal r_SEL_MUX_MEMORY_DATA_READ  : std_logic;
+  signal r_SEL_MUX_MEMORY_DATA_WRITE : std_logic;
+  signal r_EQUAL_MEMORY_PATTERN      : std_logic;
+  signal r_LESS_OFFSET_NWORDS        : std_logic;
 begin
 
-   u_CONTROLLER: entity work.memTestDataBus_controller
+   u_CONTROLLER: entity work.memTestDevice_controller
    generic map(
      DATUM_WIDTH           => DATUM_WIDTH
    )
    port map (
      -- BASIC INPUTS
-     i_clk                   => i_clk,
-     i_rst_n_async           => i_rst_n_async,
+    i_clk                       => i_clk,
+    i_rst_n_async               => i_rst_n_async,
+    
+    -- INPUT DATA ---------------------------------------------------
+    i_start                     => i_start,
+    -- to get when write data is stored - maybe be a counter of cycles if memory don't have singnal of ready
+    -- it is compatible with the use of I2C ou SPI IP
+    i_memory_write_ready        => i_memory_write_ready,
+    -- to get when read data is ok maybe be a counter of cycles if memory don't have singnal of ready
+    -- it is compatible with the use of I2C ou SPI IP
+    i_memory_read_valid         => i_memory_read_valid, 
+    -- return if PATTERN OR ANTIPATTERN is equal to data from memory
+    i_equal_memory_pattern      => r_EQUAL_MEMORY_PATTERN,
+    -- return if OFFSET is less to number of words in memory
+    i_less_offset_nwords        => r_LESS_OFFSET_NWORDS,
      
-     -- INPUT DATA ---------------------------------------------------
-     i_start                 => i_start,
-     i_address               => i_address,
-     -- to get when write data is stored - maybe be a counter of cycles if memory don't have singnal of ready
-     -- it is compatible with the use of I2C ou SPI IP
-     i_memory_write_ready    => i_memory_write_ready,
-     -- to get when read data is ok maybe be a counter of cycles if memory don't have singnal of ready
-     -- it is compatible with the use of I2C ou SPI IP
-     i_memory_read_valid     => i_memory_read_valid,
-     -- if address != 0 pattern then i_compare_address == 1 else 0
-     i_compare_address       => r_COMPAR_PATTERN_ADDRESS,
-     -- if pattern is 0 then i_pattern_zero == 1 else 0
-     i_pattern_zero          => r_PATTERN_ZERO,
-     -- OUTPUT ---------------------------------------------------
-     -- enable or not write in REG_PATTERN
-     o_ena_reg_pattern       => r_ENA_REG_PATTERN,
-     -- enable or not write in REG_ADDRESS
-     o_ena_reg_address       => r_ENA_REG_ADDRESS,
-     -- rst REGISTERS
-     o_rst_reg               => r_RST_REGS,
-     -- select PATTERN or MEMORY data to store in REG_ADDRESS
-     o_sel_reg_address       => r_MUX_SEL,
-     -- flag to indicate error: 1 to error and 0 to ok
-     o_error                 => o_error,
-     -- indicate end of configuration
-     o_end                   => o_end
+    -- OUTPUT ---------------------------------------------------
+    -- rst REGISTERS async
+    o_rst_reg                   => r_RST_REGS,
+    -- flag to indicate error: 1 to error and 0 to ok
+    o_error                     => o_error,
+    -- indicate end of configuration
+    o_end                       => o_end,
+    -- enable or not write in REG_BASE_ADDR
+    o_ena_reg_base_addr         => r_ENA_REG_BASE_ADDR,
+    -- enable or not write in REG_PATTERN
+    o_ena_reg_pattern           => r_ENA_REG_PATTERN,
+    -- enable or not write in REG_ANTIPATTERN
+    o_ena_reg_antipattern       => r_ENA_REG_ANTIPATTERN,
+    -- enable or not write in REG_OFFSET
+    o_ena_reg_offset            => r_ENA_REG_OFFSET,
+    -- select PATTERN or ANTIPATTERN data to compare with memory read data
+    o_sel_mux_memory_data_read  => r_SEL_MUX_MEMORY_DATA_READ,
+    -- select PATTERN or ANTIPATTERN data to store in memory
+    o_sel_mux_memory_data_write => r_SEL_MUX_MEMORY_DATA_WRITE
    );
 
-   u_DATAPATH: entity work.memTestDataBus_datapath
+   u_DATAPATH: entity work.memTestDevice_datapath
    generic map (
      DATUM_WIDTH  => DATUM_WIDTH
    )
    port map (
-     -- BASIC INPUTS
+   
+    -- BASIC INPUTS
      i_clk                   => i_clk,
      i_rst_n_async           => i_rst_n_async,
-     
-     i_memory_data_read      => i_memory_data_read,
-     -- enable or not write in REG_PATTERN
-     i_ena_reg_pattern       => r_ENA_REG_PATTERN,
-     -- enable or not write in REG_ADDRESS
-     i_ena_reg_address       => r_ENA_REG_ADDRESS,
-     -- rst REGISTERS
-     i_rst_reg               => r_RST_REGS,
-     -- sel to store PATTERN or MEMORY in REG_ADDRESS
-     i_sel_mux               => r_MUX_SEL,
-     
-     -- OUTPUT ---------------------------------------------------
-     -- to get when write data is stored - maybe be a counter of cycles if memory don't have singnal of ready
-     -- it is compatible with the use of I2C ou SPI IP
-     o_memory_data_write     => o_memory_data_write,
-     -- if address != 0 pattern then i_compare_address == 1 else 0
-     o_compare_address       => r_COMPAR_PATTERN_ADDRESS,
-     -- if pattern is 0 then i_pattern_zero == 1 else 0
-     o_pattern_zero          => r_PATTERN_ZERO
+    
+    -- INPUT DATA ---------------------------------------------------
+    -- to get when read data is ok maybe be a counter of cycles if memory don't have singnal of ready
+    -- it is compatible with the use of I2C ou SPI IP
+    i_memory_data_read            => i_memory_data_read,
+    -- enable or not write in REG_PATTERN  inside ACC
+    i_ena_reg_pattern             => r_ENA_REG_PATTERN,
+    -- enable or not write in REG_ANTIPATTERN inside ACC
+    i_ena_reg_antipattern         => r_ENA_REG_ANTIPATTERN,
+    -- enable or not write in REG_OFFSET
+    i_ena_reg_offset              => r_ENA_REG_OFFSET,
+    -- rst REGISTERS
+     i_rst_reg                    => r_RST_REGS,
+    -- sel to input PATTERN or ANTIPATTERN to compare with data from memory
+    i_sel_mux_memory_data_read    => r_SEL_MUX_MEMORY_DATA_READ,
+    -- sel to store PATTERN or ANTIPATTERN in memory
+    i_sel_mux_memory_data_write   => r_SEL_MUX_MEMORY_DATA_WRITE,
+    
+    -- OUTPUT ---------------------------------------------------
+    -- to get when write data is stored - maybe be a counter of cycles if memory don't have singnal of ready
+    -- it is compatible with the use of I2C ou SPI IP
+    o_memory_data_write           => o_memory_data_write,
+    -- if address != pattern then == 0 else 1
+    o_equal_memory_pattern        => r_EQUAL_MEMORY_PATTERN, 
+    -- if offset is less than words == 1 else 0
+    o_less_offset_nwords          => r_LESS_OFFSET_NWORDS
      
    );
 
    
-end rtl;
+end structural;

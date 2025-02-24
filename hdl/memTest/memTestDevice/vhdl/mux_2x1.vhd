@@ -21,10 +21,10 @@ entity mux_2x1 is
 	);
 end mux_2x1;
 
-architecture description of mux_2x1 is
+architecture behavioral of mux_2x1 is
 
 begin
 	
 	o_DOUT <= i_DIN0 when i_sel = '0' else i_DIN1;
 
-end description;
+end behavioral;
