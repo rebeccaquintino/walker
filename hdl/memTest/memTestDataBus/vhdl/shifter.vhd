@@ -6,7 +6,6 @@
 -- Modified: 19/07/2023
 -------------------------------------------------------------
 
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;               -- Needed for shifts
@@ -18,11 +17,11 @@ entity shifter is
       p_NUMBER_SHIFTER  : natural     := 3 -- number of bits to shifter number of data bits
     );
     port ( 
-      i_value                     : in  std_logic_vector(p_WIDTH_DATA-1 downto 0);
+      i_VALUE                     : in  std_logic_vector(p_WIDTH_DATA-1 downto 0);
       i_RL                        : in  std_logic ;                             -- 0 for Right or 1 for left
-      i_shifter                   : in  std_logic_vector(p_NUMBER_SHIFTER-1 downto 0);           -- Here need to be configured in the file by generic parameter
-      o_value                     : out std_logic_vector(p_WIDTH_DATA-1 downto 0);
-      o_zero                      : out std_logic 
+      i_SHIFTER                   : in  std_logic_vector(p_NUMBER_SHIFTER-1 downto 0);           -- Here need to be configured in the file by generic parameter
+      o_VALUE                     : out std_logic_vector(p_WIDTH_DATA-1 downto 0);
+      o_ZERO                      : out std_logic 
     );
 end shifter;
  
@@ -35,16 +34,16 @@ begin
     
     
     -- Left Shift
-    r_Unsigned_L <= shift_left(unsigned(i_value), to_integer(unsigned(i_shifter))); 
+    r_Unsigned_L <= shift_left(unsigned(i_VALUE), to_integer(unsigned(i_SHIFTER))); 
     -- Right Shift
-    r_Unsigned_R <= shift_right(unsigned(i_value), to_integer(unsigned(i_shifter)));
+    r_Unsigned_R <= shift_right(unsigned(i_VALUE), to_integer(unsigned(i_SHIFTER)));
 
     r_value <= std_logic_vector(r_Unsigned_R) when i_RL = '0' else
                 std_logic_vector(r_Unsigned_L); 
-    o_value <= r_value;                             
+    o_VALUE <= r_value;                             
     
-    -- if only one bit is 1, OR_REDUCE results 1, else, all bits is 0, OR_REDUCE results 0
-    o_zero <= '1' when OR_REDUCE(r_value) = '0' else '0';
+    -- The OR_REDUCE function outputs '1' if at least one bit in r_value is '1'. Otherwise, if all bits are '0', it outputs '0'.
+    o_ZERO <= '1' when OR_REDUCE(r_value) = '0' else '0';
      
 
 end architecture behavioral;
