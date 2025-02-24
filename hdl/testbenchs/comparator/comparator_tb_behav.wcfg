@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="comparator_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="comparator_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="31501fs"></ZoomEndTime>
+      <Cursor1Time time="0fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="270"></NameColumnWidth>
+      <ValueColumnWidth column_width="131"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="6" />
+   <wvobject fp_name="/comparator_tb/i_DIN0" type="array">
+      <obj_property name="ElementShortName">i_DIN0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i_DIN0[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/comparator_tb/i_DIN1" type="array">
+      <obj_property name="ElementShortName">i_DIN1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i_DIN1[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/comparator_tb/o_ZERO" type="logic">
+      <obj_property name="ElementShortName">o_ZERO</obj_property>
+      <obj_property name="ObjectShortName">o_ZERO</obj_property>
+   </wvobject>
+   <wvobject fp_name="/comparator_tb/o_EQUAL" type="logic">
+      <obj_property name="ElementShortName">o_EQUAL</obj_property>
+      <obj_property name="ObjectShortName">o_EQUAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="/comparator_tb/o_LESS" type="logic">
+      <obj_property name="ElementShortName">o_LESS</obj_property>
+      <obj_property name="ObjectShortName">o_LESS</obj_property>
+   </wvobject>
+   <wvobject fp_name="/comparator_tb/p_WIDTH" type="other">
+      <obj_property name="ElementShortName">p_WIDTH</obj_property>
+      <obj_property name="ObjectShortName">p_WIDTH</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+</wave_config>
