@@ -1,7 +1,7 @@
 -------------------------------------------------------------
--- File: memTestDataBus_top.vhd
+-- File: shifter.vhd
 -- Author: Rebecca Quintino Do Ó and Felipe Viel
--- File function: shifter dadat to left or right and identify zero values after shift
+-- File function: shifter data to left or right and identify zero values after shift
 -- Created: 09/06/2023
 -- Modified: 19/07/2023
 -------------------------------------------------------------
@@ -26,7 +26,7 @@ entity shifter is
     );
 end shifter;
  
-architecture behave of shifter is
+architecture behavioral of shifter is
   signal r_value      : std_logic_vector(p_WIDTH_DATA-1 downto 0);
   signal r_Unsigned_L : unsigned(p_WIDTH_DATA-1 downto 0) ;
   signal r_Unsigned_R : unsigned(p_WIDTH_DATA-1 downto 0);
@@ -47,5 +47,5 @@ begin
     o_zero <= '1' when OR_REDUCE(r_value) = '0' else '0';
      
 
-end architecture behave;
+end architecture behavioral;
 
