@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../shifter.srcs/sources_1/new/shifter.vhd" \
+"../../../../shifter.srcs/sources_1/new/shifter_tb.vhd" \
+
+# Do not sort compile order
+nosort

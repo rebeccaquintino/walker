@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="shifter_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="shifter_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="12861fs"></ZoomEndTime>
+      <Cursor1Time time="2120fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="270"></NameColumnWidth>
+      <ValueColumnWidth column_width="131"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="7" />
+   <wvobject fp_name="/shifter_tb/i_value" type="array">
+      <obj_property name="ElementShortName">i_value[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i_value[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/shifter_tb/i_RL" type="logic">
+      <obj_property name="ElementShortName">i_RL</obj_property>
+      <obj_property name="ObjectShortName">i_RL</obj_property>
+   </wvobject>
+   <wvobject fp_name="/shifter_tb/i_shifter" type="array">
+      <obj_property name="ElementShortName">i_shifter[2:0]</obj_property>
+      <obj_property name="ObjectShortName">i_shifter[2:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/shifter_tb/o_value" type="array">
+      <obj_property name="ElementShortName">o_value[7:0]</obj_property>
+      <obj_property name="ObjectShortName">o_value[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/shifter_tb/o_zero" type="logic">
+      <obj_property name="ElementShortName">o_zero</obj_property>
+      <obj_property name="ObjectShortName">o_zero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/shifter_tb/p_WIDTH_DATA" type="other">
+      <obj_property name="ElementShortName">p_WIDTH_DATA</obj_property>
+      <obj_property name="ObjectShortName">p_WIDTH_DATA</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/shifter_tb/p_NUMBER_SHIFTER" type="other">
+      <obj_property name="ElementShortName">p_NUMBER_SHIFTER</obj_property>
+      <obj_property name="ObjectShortName">p_NUMBER_SHIFTER</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+</wave_config>

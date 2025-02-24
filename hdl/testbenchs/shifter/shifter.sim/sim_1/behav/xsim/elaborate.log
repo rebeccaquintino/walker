@@ -1,0 +1,18 @@
+Vivado Simulator 2020.1
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -wto 782167ad0f104880b40b9a0df16ef754 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot shifter_tb_behav xil_defaultlib.shifter_tb -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling architecture behavioral of entity xil_defaultlib.shifter [shifter_default]
+Compiling architecture behavioral of entity xil_defaultlib.shifter_tb
+Built simulation snapshot shifter_tb_behav
