@@ -3,7 +3,7 @@
 -- Author: Felipe Viel
 -- File function: processing blocks of memTestDataBus
 -- Created: 03/07/2023
--- Modified: 10/01/2025 by Rebecca Quintino Do O
+-- Modified: 24/02/2025 by Rebecca Quintino Do O
 -------------------------------------------------------------
 
 library ieee;
@@ -84,7 +84,7 @@ begin
        );
 
    w_NOT_DOUT_ACC_PATTERN <= not w_DOUT_ACC_PATTERN;
---   w_RST_REGS <= i_rst_reg OR i_rst_n_async;
+   w_RST_REGS <= i_rst_reg OR i_rst_n_async;
 
    u_ACC_OFFSET: entity work.accumulator 
       generic map(
@@ -107,7 +107,7 @@ begin
    )
    port map (
       i_CLK    => i_clk,
-      i_RST    => i_rst_n_async,
+      i_RST    => w_RST_REGS,
       i_ENABLE => i_ena_reg_pattern,
       i_DIN    => w_DOUT_ACC_PATTERN,
       o_DOUT   => w_DOUT_REG_PATTERN
@@ -120,7 +120,7 @@ begin
    )
    port map (
       i_CLK    => i_clk,
-      i_RST    => i_rst_n_async,
+      i_RST    => w_RST_REGS,
       i_ENABLE => i_ena_reg_antipattern,
       i_DIN    => w_NOT_DOUT_ACC_PATTERN,
       o_DOUT   => w_DOUT_REG_ANTIPATTERN
