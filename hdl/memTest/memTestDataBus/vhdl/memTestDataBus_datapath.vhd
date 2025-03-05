@@ -1,8 +1,9 @@
 -------------------------------------------------------------
 -- File: memTestDataBus_datapath.vhd
--- Author: Rebecca Quintino Do Ó
+-- Author: Rebecca Quintino Do ?
 -- File function: processing blocks of memTestDataBus
 -- Created: 24/02/2025
+-- Modified: 05/03/2025
 -------------------------------------------------------------
 
 library ieee;
@@ -21,34 +22,40 @@ entity memTestDataBus_datapath is
     i_rst_n_async           : in  std_logic;
     
     -- INPUT DATA ---------------------------------------------------
-    i_memory_data_read      : in  std_logic_vector (DATUM_WIDTH-1 downto 0);
+    i_memory_data_read       : in  std_logic_vector (DATUM_WIDTH-1 downto 0);
     -- enable or not write in REG_PATTERN
-    i_ena_reg_pattern       : in std_logic;
+    i_ena_reg_pattern        : in std_logic;
+    -- enable or not write in REG_ADDRESS
+    i_ena_reg_address        : in std_logic;
     -- rst REGISTERS
-    i_rst_reg               : in std_logic;
+    i_rst_reg                : in std_logic;
     -- Define the direction of shifter: 0 for Right or 1 for left
-    i_RL_shifter            : in std_logic;
+    i_RL_shifter             : in std_logic;
+    -- select to store PATTERN or MEMORY in REG_ADDRESS
+    i_sel_mux_pattern_memory : in std_logic;
   
 
     
     -- OUTPUT ---------------------------------------------------
     -- to get when write data is stored - maybe be a counter of cycles if memory don't have singnal of ready
     -- it is compatible with the use of I2C ou SPI IP
-    o_memory_data_write     : out  std_logic_vector (DATUM_WIDTH-1 downto 0);
+    o_memory_data_write      : out  std_logic_vector (DATUM_WIDTH-1 downto 0);
     -- if address != pattern then o_equal_address_pattern == 0 else 1
-    o_equal_address_pattern : out  std_logic; 
+    o_equal_address_pattern  : out  std_logic; 
     -- if pattern = 0b00000000 then o_equal_zero_pattern == 1 else 0
-    o_equal_zero_pattern    : out std_logic;
+    o_equal_zero_pattern     : out std_logic;
     -- if only one bit is 1, OR_REDUCE results 1, else, all bits is 0, OR_REDUCE results 0
-    o_zero                  : out std_logic   
+    o_zero                       : out std_logic   
 );
 
 end entity memTestDataBus_datapath;
 
 architecture rtl of memTestDataBus_datapath is
-   signal W_RST_REGS           : std_logic;
-   signal W_DOUT_REG_PATTERN   : std_logic_vector (DATUM_WIDTH-1 downto 0);
-   signal W_DOUT_SHIFT_PATTERN : std_logic_vector (DATUM_WIDTH-1 downto 0);
+   signal W_RST_REGS                : std_logic;
+   signal W_DOUT_REG_PATTERN        : std_logic_vector (DATUM_WIDTH-1 downto 0);
+   signal W_DOUT_REG_ADDRESS        : std_logic_vector (DATUM_WIDTH-1 downto 0);
+   signal W_DOUT_SHIFT_PATTERN      : std_logic_vector (DATUM_WIDTH-1 downto 0);
+   signal W_DOUT_MUX_PATTERN_MEMORY : std_logic_vector (DATUM_WIDTH-1 downto 0);
 
 
 begin
@@ -66,6 +73,19 @@ begin
       o_DOUT   => W_DOUT_REG_PATTERN
    );
 
+   u_REG_ADDRESS: entity work.reg
+   generic map(
+    p_WIDTH       => DATUM_WIDTH,
+    p_INIT_DATA   => 0 -- init patter with fixed 0 in all bits
+   )
+   port map (
+      i_CLK    => i_clk,
+      i_RST    => W_RST_REGS,
+      i_ENABLE => i_ena_reg_address,
+      i_DIN    => W_DOUT_MUX_PATTERN_MEMORY,
+      o_DOUT   => W_DOUT_REG_ADDRESS
+   );
+
    u_SHIFTER: entity work.shifter 
    generic map(
       p_WIDTH_DATA     => DATUM_WIDTH,
@@ -78,6 +98,17 @@ begin
       o_zero      => o_zero, 
       o_value     => W_DOUT_SHIFT_PATTERN
    );
+   
+   u_MUX_PATTERN_MEMORY: entity work.mux_2x1
+   generic map(
+		p_WIDTH  =>  DATUM_WIDTH -- size of datum -- default is 8b (char)
+	)
+	port map (
+		i_DIN0   => W_DOUT_REG_PATTERN,
+		i_DIN1 	 => i_memory_data_read,
+		i_SEL    => i_sel_mux_pattern_memory,
+		o_DOUT   => W_DOUT_MUX_PATTERN_MEMORY
+	);   
 
    u_COMPAR_ZERO_PATTERN: entity work.comparator
    generic map(
