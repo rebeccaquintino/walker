@@ -3,6 +3,7 @@
 -- Author: Rebecca Quintino Do Ó 
 -- File function: FSM behavior of memTestDataBus
 -- Created: 26/02/2025
+-- Modified: 07/03/2025
 -------------------------------------------------------------
 
 library ieee;
@@ -57,6 +58,8 @@ architecture rtl of memTestDataBus_controller is
   type state_t is (s_idle,
                    s_start,
                    s_save_address,
+                   s_write_memory_wait,
+                   s_read_memory_wait,
                    s_equal_address_pattern,
                    s_shift_pattern,
                    s_equal_pattern_zero,
@@ -97,9 +100,20 @@ begin  -- architecture rtl
       -------------------------------------------------------------
       when s_start =>
         next_state <= s_save_address;
+    
+      when s_save_address => -- maybe is necessary change here to talk with memmory using the necessary signals
+        if i_memory_write_ready = '1' then
+          next_state <= s_read_memory_wait; --s_read_memory;
+        else
+          next_state <= s_write_memory_wait;
+        end if;
 
-      when s_save_address =>
-        next_state <= s_equal_address_pattern;
+      when s_read_memory_wait => -- maybe is necessary change here to talk with memmory using the necessary signals
+        if i_memory_read_valid = '1' then
+          next_state <= s_equal_address_pattern;
+        else
+          next_state <= s_read_memory_wait;
+        end if; 
     
       when s_equal_address_pattern => 
         if i_equal_address_pattern = '1' then
@@ -138,6 +152,8 @@ begin  -- architecture rtl
   -- enable or not write in REG_ADDRESS
   o_ena_reg_address <= '1' when (current_state = s_start or
                                  current_state = s_save_address or
+                                 current_state = s_read_memory_wait or
+                                 current_state = s_write_memory_wait or
                                  current_state = s_equal_address_pattern) 
                            else '0';
   -- 0 for Right or 1 for left
