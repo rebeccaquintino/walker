@@ -57,12 +57,12 @@ architecture rtl of memTestDataBus_controller is
   -- states of FSM: the sequence of states is from up to down
   type state_t is (s_idle,
                    s_start,
+                   s_read_address1,
+                   s_equal_pattern_zero,
                    s_save_address,
-                   s_write_memory_wait,
-                   s_read_memory_wait,
+                   s_read_address2,
                    s_equal_address_pattern,
                    s_shift_pattern,
-                   s_equal_pattern_zero,
                    s_error,
                    s_end
                    );
@@ -101,18 +101,32 @@ begin  -- architecture rtl
       when s_start =>
         next_state <= s_save_address;
     
-      when s_save_address => -- maybe is necessary change here to talk with memmory using the necessary signals
+      when s_read_address1 => -- maybe is necessary change here to talk with memmory using the necessary signals
         if i_memory_write_ready = '1' then
-          next_state <= s_read_memory_wait; --s_read_memory;
+          next_state <= s_equal_pattern_zero; --s_read_memory;
         else
-          next_state <= s_write_memory_wait;
+          next_state <= s_read_address1;
         end if;
-
-      when s_read_memory_wait => -- maybe is necessary change here to talk with memmory using the necessary signals
-        if i_memory_read_valid = '1' then
-          next_state <= s_equal_address_pattern;
+        
+      when s_equal_pattern_zero => 
+        if i_equal_pattern_zero = '1' then
+          next_state <= s_save_address;
         else
-          next_state <= s_read_memory_wait;
+          next_state <= s_end; --NULL
+        end if; 
+
+      when s_save_address => -- maybe is necessary change here to talk with memmory using the necessary signals
+        if i_memory_read_valid = '1' then
+          next_state <= s_read_address2;
+        else
+          next_state <= s_save_address;
+        end if; 
+        
+      when s_read_address2 => -- maybe is necessary change here to talk with memmory using the necessary signals
+        if i_memory_read_valid = '1' then
+          next_state <= s_equal_address_pattern ;
+        else
+          next_state <= s_read_address2;
         end if; 
     
       when s_equal_address_pattern => 
@@ -125,12 +139,7 @@ begin  -- architecture rtl
       when s_shift_pattern => 
         next_state <= s_equal_pattern_zero;
  
-      when s_equal_pattern_zero => 
-        if i_equal_pattern_zero = '1' then
-          next_state <= s_equal_address_pattern;
-        else
-          next_state <= s_end; --NULL
-        end if;
+      
 
       when s_error =>
         next_state <= s_end;
@@ -151,9 +160,9 @@ begin  -- architecture rtl
                             else '0';
   -- enable or not write in REG_ADDRESS
   o_ena_reg_address <= '1' when (current_state = s_start or
-                                 current_state = s_save_address or
-                                 current_state = s_read_memory_wait or
-                                 current_state = s_write_memory_wait or
+                                 current_state = s_read_address1 or
+                                 current_state = s_save_address or  
+                                 current_state = s_read_address2 or
                                  current_state = s_equal_address_pattern) 
                            else '0';
   -- 0 for Right or 1 for left
