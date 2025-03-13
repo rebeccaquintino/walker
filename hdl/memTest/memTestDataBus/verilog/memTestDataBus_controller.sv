@@ -33,10 +33,8 @@ module memTestDataBus_controller #(
   typedef enum logic [3:0] {
     s_idle,
     s_start,
-    s_read_address1,
     s_equal_pattern_zero,
     s_save_address,
-    s_read_address2,
     s_equal_address_pattern,
     s_shift_pattern,
     s_error,
@@ -68,15 +66,7 @@ module memTestDataBus_controller #(
       end
       // ----------------------------------------------------------
       s_start: begin
-        next_state = s_save_address;
-      end
-
-      s_read_address1: begin
-        if (i_memory_write_ready) begin
-          next_state = s_equal_pattern_zero;
-        end else begin
-          next_state = s_read_address1;
-        end
+        next_state = s_equal_pattern_zero;
       end
 
       s_equal_pattern_zero: begin
@@ -88,19 +78,7 @@ module memTestDataBus_controller #(
       end
 
       s_save_address: begin
-        if (i_memory_read_valid) begin
-          next_state = s_read_address2;
-        end else begin
-          next_state = s_save_address;
-        end
-      end
-
-      s_read_address2: begin
-        if (i_memory_read_valid) begin
           next_state = s_equal_address_pattern;
-        end else begin
-          next_state = s_read_address2;
-        end
       end
 
       s_equal_address_pattern: begin
@@ -136,9 +114,7 @@ module memTestDataBus_controller #(
                               current_state == s_equal_pattern_zero);
 
   assign o_ena_reg_address = (current_state == s_start || 
-                              current_state == s_read_address1 || 
                               current_state == s_save_address || 
-                              current_state == s_read_address2 || 
                               current_state == s_equal_address_pattern);
 
   assign o_RL_shifter = (current_state == s_start || 
